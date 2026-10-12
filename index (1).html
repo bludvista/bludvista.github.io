@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shashank Kumar Sadashiva</title>
+<meta name="description" content="Shashank Kumar Sadashiva – M.Eng. student in Artificial Intelligence at SRH University Heidelberg. Research on reliable LLM-based information extraction and rigorous evaluation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F4F6F8;
+    --ink: #1F2A44;
+    --muted: #55607A;
+    --rule: #D3D9E2;
+    --verified: #2F6F6B;
+    --flagged: #B7791F;
+    --link: #1F4E8C;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #141A26;
+      --ink: #E6EAF2;
+      --muted: #A3ADC2;
+      --rule: #2E3850;
+      --verified: #5FB3AC;
+      --flagged: #E0A84A;
+      --link: #8FB4F0;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 1.0625rem/1.6 "Source Sans 3", system-ui, sans-serif;
+  }
+  .page { max-width: 44rem; margin: 0 auto; padding: 4.5rem 1.25rem 4rem; }
+  h1, h2, h3 { font-family: "Spectral", Georgia, serif; font-weight: 600; line-height: 1.2; margin: 0; }
+  h1 { font-size: clamp(2.2rem, 6vw, 3.1rem); letter-spacing: -0.01em; }
+  h2 { font-size: 1.5rem; margin: 3.5rem 0 1rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
+  h3 { font-size: 1.15rem; }
+  p { margin: 0 0 1rem; }
+  a { color: var(--link); text-underline-offset: 0.18em; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 2px; }
+  .role { font-family: "Spectral", Georgia, serif; font-style: italic; font-size: 1.2rem; color: var(--muted); margin: 0.5rem 0 1.5rem; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; margin: 1.5rem 0 0; padding: 0; list-style: none; font-weight: 600; }
+
+  /* The one memorable element: the audit finding as 8 cells, 7 flagged */
+  .finding { margin: 3rem 0 0; display: grid; grid-template-columns: auto 1fr; gap: 1.25rem 1.75rem; align-items: center; }
+  .cells { display: grid; grid-template-columns: repeat(4, 1.6rem); gap: 0.35rem; }
+  .cell { width: 1.6rem; height: 1.6rem; border-radius: 3px; background: var(--flagged); }
+  .cell.ok { background: transparent; border: 2px solid var(--verified); }
+  .finding p { margin: 0; font-family: "Spectral", Georgia, serif; font-size: 1.15rem; line-height: 1.5; }
+  .finding .key { grid-column: 1 / -1; font-size: 0.95rem; color: var(--muted); margin: 0; display: flex; gap: 1.25rem; flex-wrap: wrap; }
+  .key span::before { content: ""; display: inline-block; width: 0.8rem; height: 0.8rem; border-radius: 2px; margin-right: 0.4rem; vertical-align: -0.05rem; }
+  .key .k-flag::before { background: var(--flagged); }
+  .key .k-ok::before { border: 2px solid var(--verified); width: 0.55rem; height: 0.55rem; }
+  @media (prefers-reduced-motion: no-preference) {
+    .cell { animation: mark 0.5s ease-out both; }
+    .cell:nth-child(2) { animation-delay: .08s } .cell:nth-child(3) { animation-delay: .16s } .cell:nth-child(4) { animation-delay: .24s }
+    .cell:nth-child(5) { animation-delay: .32s } .cell:nth-child(6) { animation-delay: .40s } .cell:nth-child(7) { animation-delay: .48s } .cell:nth-child(8) { animation-delay: .56s }
+    @keyframes mark { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+  }
+
+  .entry { margin: 0 0 1.75rem; }
+  .entry-head { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
+  .when { color: var(--muted); font-size: 0.95rem; white-space: nowrap; }
+  .sub { color: var(--muted); margin: 0.15rem 0 0.5rem; }
+  ul.points { margin: 0; padding-left: 1.1rem; }
+  ul.points li { margin-bottom: 0.35rem; }
+  .stack { color: var(--muted); font-size: 0.95rem; margin: 0.35rem 0 0; }
+  .paper-title { font-family: "Spectral", Georgia, serif; font-style: italic; font-size: 1.1rem; }
+  dl.skills { display: grid; grid-template-columns: 11rem 1fr; gap: 0.5rem 1.25rem; margin: 0; }
+  dl.skills dt { font-weight: 600; }
+  dl.skills dd { margin: 0; }
+  footer { margin-top: 4rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.95rem; }
+  @media (max-width: 34rem) {
+    .page { padding-top: 3rem; }
+    .finding { grid-template-columns: 1fr; }
+    dl.skills { grid-template-columns: 1fr; gap: 0.15rem; }
+    dl.skills dd { margin-bottom: 0.6rem; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <header>
+    <h1>Shashank Kumar Sadashiva</h1>
+    <p class="role">M.Eng. student in Artificial Intelligence, SRH University Heidelberg</p>
+    <p>I work on making machine learning results trustworthy: building LLM pipelines, then checking whether what they report actually holds up. Since May 2025 I have been doing research on LLM-based information extraction at HOPn UG. I graduate in April 2027 and am looking for a PhD position.</p>
+    <ul class="links">
+      <li><a href="cv.pdf">Download CV (PDF)</a></li>
+      <li><a href="https://github.com/bludvista">GitHub</a></li>
+      <li><a href="mailto:shashankkumarsadashiva@gmail.com">shashankkumarsadashiva@gmail.com</a></li>
+    </ul>
+
+    <figure class="finding" aria-labelledby="finding-text">
+      <div class="cells" role="img" aria-label="Eight squares: seven flagged, one verified, showing 87.5 percent">
+        <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span>
+        <span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell ok"></span>
+      </div>
+      <p id="finding-text">When I audited the open-source code of a published confidence-aggregation method, 7 in 8 of its accepted outputs (87.5%) passed only because of an uncorrected statistical counting flaw. I designed and validated a corrected method.</p>
+      <p class="key"><span class="k-flag">passed only because of the flaw</span><span class="k-ok">holds up</span></p>
+    </figure>
+  </header>
+
+  <section aria-labelledby="research">
+    <h2 id="research">Research</h2>
+    <div class="entry">
+      <div class="entry-head"><h3>Research &amp; Development Intern, HOPn UG</h3><span class="when">05/2025 – present</span></div>
+      <p class="sub">LLM-based information extraction (remote)</p>
+      <ul class="points">
+        <li>Built a 7-module closed-loop pipeline: LLM extraction, probabilistic aggregation and synthetic-data generation, including QLoRA 4-bit fine-tuning of a 7B model under limited GPU memory.</li>
+        <li>Ran pre-registered, multi-seed evaluations of 5 LLMs on the CaRB benchmark and 3 further domains. The results showed that extractor recall, not aggregation, was the bottleneck, contrary to the initial hypothesis.</li>
+        <li>A provenance gate I built raised training-data precision from 93.5% to 100%. I also found and fixed a data-leakage bug and an 8x metric error.</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <h3>Manuscript</h3>
+      <p class="sub"><span class="paper-title">Corroboration-Gated Confidence Aggregation in Closed-Loop Information Extraction</span>, in final preparation for submission to Knowledge-Based Systems (Elsevier).</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="projects">
+    <h2 id="projects">Projects</h2>
+    <div class="entry">
+      <div class="entry-head"><h3><a href="https://github.com/bludvista/support-agent">Customer support AI agent</a></h3><span class="when">2026</span></div>
+      <p>An LLM agent that answers from a knowledge base and acts on a synthetic CRM through MCP tools. I evaluated 3 models on 30 conversations with an LLM judge plus deterministic checks, measuring time to first token, p95 latency and cost, and wrote down where the evaluation itself falls short.</p>
+      <p class="stack">LangGraph, MCP, Qdrant, FastAPI, PyTest (95 tests), GitHub Actions</p>
+    </div>
+    <div class="entry">
+      <div class="entry-head"><h3><a href="https://github.com/bludvista/datamind">DataMind</a></h3><span class="when">2026</span></div>
+      <p>A multi-agent pipeline that turns HR attrition data into statistics, charts and LLM-written recommendations, with a streaming API. It includes a data-protection review and a preliminary EU AI Act assessment of the tool.</p>
+      <p class="stack">Python, FastAPI, FAISS, Docker, PyTest (54 tests), GitHub Actions</p>
+    </div>
+    <div class="entry">
+      <div class="entry-head"><h3>Histopathology cancer detection</h3><span class="when">2026</span></div>
+      <p>A CNN pipeline on 327,000 medical image patches with automated data-quality checks, comparing plain and residual architectures.</p>
+      <p class="stack">TensorFlow, Keras</p>
+    </div>
+    <div class="entry">
+      <div class="entry-head"><h3>Computer vision coursework</h3><span class="when">2025 – 2026</span></div>
+      <p>A CNN digit classifier with 99.29% test accuracy on MNIST, plus HOG features, edge detection and graph-based segmentation implemented from scratch.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="education">
+    <h2 id="education">Education</h2>
+    <div class="entry">
+      <div class="entry-head"><h3>M.Eng. Information Technology (Artificial Intelligence)</h3><span class="when">04/2025 – 04/2027</span></div>
+      <p class="sub">SRH University Heidelberg</p>
+    </div>
+    <div class="entry">
+      <div class="entry-head"><h3>B.Eng. Information Science Engineering</h3><span class="when">09/2019 – 09/2023</span></div>
+      <p class="sub">Vemana Institute of Technology, India</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="skills">
+    <h2 id="skills">Skills</h2>
+    <dl class="skills">
+      <dt>Deep learning</dt><dd>PyTorch, TensorFlow/Keras, Hugging Face, QLoRA and 4-bit quantization, CNNs, Transformers</dd>
+      <dt>Evaluation</dt><dd>Pre-registered multi-seed experiments, statistical testing, error analysis, LLM-as-a-judge</dd>
+      <dt>Software</dt><dd>Python, SQL, FastAPI, Docker, Git, Linux, GitHub Actions, PyTest</dd>
+      <dt>Languages</dt><dd>English (C1), German (A2), Hindi and Kannada (native)</dd>
+    </dl>
+  </section>
+
+  <footer>Based in Heidelberg, Germany. Last updated October 2026.</footer>
+</main>
+</body>
+</html>
